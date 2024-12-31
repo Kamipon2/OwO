@@ -3,19 +3,29 @@ using UnityEngine;
 public class ClickAnimation : MonoBehaviour
 {
     private Animator animator;
+    private bool hasAnimationPlayed = false; 
 
     void Start()
     {
-        // Получаем компонент Animator
         animator = GetComponent<Animator>();
     }
 
     void OnMouseDown()
     {
-        // Воспроизводим анимацию при нажатии на объект
-        if (animator != null)
+        if (!hasAnimationPlayed) 
         {
-            animator.SetTrigger("PlayAnimation");
+            if (animator != null)
+            {
+                
+                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+                
+                if (!stateInfo.IsName("YourAnimationName")) 
+                {
+                    animator.SetTrigger("PlayAnimation");
+                    hasAnimationPlayed = true; 
+                }
+            }
         }
     }
 }
