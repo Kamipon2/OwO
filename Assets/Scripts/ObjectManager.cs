@@ -6,7 +6,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject targetObject; 
     public Vector3 newPosition; 
     public Quaternion newRotation; 
-
+    
     private void Update()
     {
         if (objects.Length != 6)

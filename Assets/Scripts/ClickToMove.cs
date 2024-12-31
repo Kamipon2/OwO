@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
 {
-    public Vector3 newPosition = new Vector3(0, 1, 0);
+    //public Vector3 newPosition = new Vector3(0, 1, 0);
     public Vector3 newRotationEuler = new Vector3(0, 90, 0); 
+    public Camera cam;
+    public float rasstoianie;
     
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
     }
 
     void OnMouseDown()
@@ -20,7 +23,7 @@ public class ClickToMove : MonoBehaviour
         }
 
         
-        transform.position = newPosition;
+        transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + rasstoianie);;
 
         
         transform.rotation = Quaternion.Euler(newRotationEuler);
