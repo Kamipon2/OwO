@@ -3308,8 +3308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b1aa016d7f5724e96449b2368b1d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPosition: {x: 10.111, y: 14.96, z: -17.578}
   newRotationEuler: {x: -90, y: 0, z: 0}
+  cam: {fileID: 0}
+  rasstoianie: 0.83
 --- !u!114 &1316586567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4634,7 +4635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114762042097486276, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: canRun
