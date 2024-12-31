@@ -3,7 +3,7 @@ using UnityEngine;
 public class ClickToMove : MonoBehaviour
 {
     public Vector3 newPosition = new Vector3(0, 1, 0);
-    public Vector3 newRotationEuler = new Vector3(0, 90, 0); // Углы Эйлера для вращения
+    public Vector3 newRotationEuler = new Vector3(0, 90, 0); 
     
     private Rigidbody rb;
 
@@ -19,10 +19,10 @@ public class ClickToMove : MonoBehaviour
             rb.isKinematic = true;
         }
 
-        // Перемещение объекта
+        
         transform.position = newPosition;
 
-        // Установка нового вращения сразу
+        
         transform.rotation = Quaternion.Euler(newRotationEuler);
     }
 }
