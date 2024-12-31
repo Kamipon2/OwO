@@ -39,11 +39,11 @@ public class ObjectManager : MonoBehaviour
         {
             targetObject.transform.position = newPosition;
             targetObject.transform.rotation = newRotation;
-            Debug.Log("Позиция и поворот targetObject изменены.");
+            
         }
         else
         {
-            Debug.LogError("targetObject не задан.");
+            
         }
     }
 }

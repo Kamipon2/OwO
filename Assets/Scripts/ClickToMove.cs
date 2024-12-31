@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
 {
-    //public Vector3 newPosition = new Vector3(0, 1, 0);
+   
     public Vector3 newRotationEuler = new Vector3(0, 90, 0); 
     public Camera cam;
     public float rasstoianie;

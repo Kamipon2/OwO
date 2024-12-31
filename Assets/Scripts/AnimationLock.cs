@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ClickAnimation : MonoBehaviour
+public class ClickAnimations : MonoBehaviour
 {
     private Animator animator;
     private bool hasAnimationPlayed = false; 
@@ -50,6 +50,16 @@ public class ClickAnimation : MonoBehaviour
             {
                 script2.enabled = true;
             }
+        }
+    }
+
+    void OnEnable()
+    {
+        // Убедитесь, что коллайдер остается включенным
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = true; // Включаем коллайдер, если он был отключен
         }
     }
 }
