@@ -61,8 +61,9 @@ public class IaikiBolshie : MonoBehaviour
     // Метод для возврата игрока на предыдущие позиции
     public void ReturnToPreviousPosition()
     {
-        player.transform.position = previousPlayerPosition;
-        player.GetComponentInChildren<Camera>().transform.position = previousCameraPosition;
+        //player.transform.position = previousPlayerPosition;
+        //player.GetComponentInChildren<Camera>().transform.position = previousCameraPosition;
+        player.GetComponentInChildren<Camera>().transform.localPosition = new Vector3(0f,1.48800004f,0f);
 
         // Включаем управление и отображение
         player.GetComponentInChildren<FirstPersonLook>().enabled = true;

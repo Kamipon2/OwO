@@ -2483,27 +2483,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.48749238
+      value: 0.4530218
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.27357873
+      value: 0.254234
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2775644
+      value: 0.25793782
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4474
+      value: 7.644
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.925
+      value: 12.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.654
+      value: -13.494
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd3111f7e219db742adc0713074458a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3234,7 +3234,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -3276,7 +3276,7 @@ Transform:
   m_GameObject: {fileID: 1316586559}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.111, y: 14.068, z: -15.203}
+  m_LocalPosition: {x: 10.111, y: 14.01, z: -15.203}
   m_LocalScale: {x: 0.59822375, y: 0.0078529315, z: 0.84674734}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3362,6 +3362,7 @@ MonoBehaviour:
   targetObject: {fileID: 1316586559}
   newPosition: {x: 10.111, y: 14.068, z: -15.203}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
+  iaikiBolshie: {fileID: 839384953}
 --- !u!1 &1344082542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: bd3111f7e219db742adc0713074458a0, type: 3}
@@ -3411,15 +3412,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23d7b8629a9288b4ca77027de69c94e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.424
+      value: 8.907
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23d7b8629a9288b4ca77027de69c94e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.058
+      value: 13.993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23d7b8629a9288b4ca77027de69c94e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.247
+      value: -14.952
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23d7b8629a9288b4ca77027de69c94e9, type: 3}
       propertyPath: m_LocalRotation.w
