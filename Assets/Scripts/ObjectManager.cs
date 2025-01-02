@@ -6,7 +6,9 @@ public class ObjectManager : MonoBehaviour
     public GameObject targetObject; 
     public Vector3 newPosition; 
     public Quaternion newRotation; 
-    
+
+    public IaikiBolshie iaikiBolshie; 
+
     private void Update()
     {
         if (objects.Length != 6)
@@ -17,7 +19,6 @@ public class ObjectManager : MonoBehaviour
 
         int disabledCount = 0;
 
-        
         foreach (GameObject obj in objects)
         {
             if (obj == null || !obj.activeInHierarchy)
@@ -26,10 +27,11 @@ public class ObjectManager : MonoBehaviour
             }
         }
 
-        
+        // Если 3 или более объектов отключены, вызываем метод из IaikiBolshie
         if (disabledCount >= 3)
         {
             ChangeTargetObjectTransform();
+            iaikiBolshie.ReturnToPreviousPosition(); // Вызываем метод возврата позиции
         }
     }
 
@@ -39,11 +41,10 @@ public class ObjectManager : MonoBehaviour
         {
             targetObject.transform.position = newPosition;
             targetObject.transform.rotation = newRotation;
-            
         }
         else
         {
-            
+            Debug.LogWarning("Целевой объект не установлен.");
         }
     }
 }
