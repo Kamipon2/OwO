@@ -8,6 +8,8 @@ public class ClickToMove : MonoBehaviour
     public IaikiBolshie iaikiBolshie; // Ссылка на IaikiBolshie
     private Rigidbody rb;
 
+    private bool hasMoved = false; // Переменная для отслеживания, было ли перемещение
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,13 +18,19 @@ public class ClickToMove : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (rb != null)
+        // Проверяем, было ли уже перемещение
+        if (!hasMoved)
         {
-            rb.isKinematic = true;
-        }
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+            }
 
-        transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + rasstoianie);
-        transform.rotation = Quaternion.Euler(newRotationEuler);
+            transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + rasstoianie);
+            transform.rotation = Quaternion.Euler(newRotationEuler);
+
+            hasMoved = true; // Устанавливаем флаг, что объект был перемещен
+        }
     }
 
     // Метод для отключения isKinematic

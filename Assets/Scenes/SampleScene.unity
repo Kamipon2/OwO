@@ -1304,7 +1304,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -3340,6 +3340,7 @@ MonoBehaviour:
   newRotationEuler: {x: -90, y: 0, z: 0}
   cam: {fileID: 0}
   rasstoianie: 0.83
+  iaikiBolshie: {fileID: 0}
 --- !u!114 &1316586567
 MonoBehaviour:
   m_ObjectHideFlags: 0

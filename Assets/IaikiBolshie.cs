@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class IaikiBolshie : MonoBehaviour
 {
     public GameObject player; // Ссылка на игрока
@@ -6,6 +7,8 @@ public class IaikiBolshie : MonoBehaviour
 
     private Vector3 previousPlayerPosition; // Предыдущая позиция игрока
     private Vector3 previousCameraPosition; // Предыдущая позиция камеры
+
+    private bool hasMoved = false; // Переменная для отслеживания, было ли перемещение
 
     void Start()
     {
@@ -15,8 +18,8 @@ public class IaikiBolshie : MonoBehaviour
 
     void Update()
     {
-        // Проверяем нажатие клавиши E
-        if (Input.GetKeyDown(KeyCode.E))
+        // Проверяем нажатие клавиши E и если еще не перемещали игрока
+        if (Input.GetKeyDown(KeyCode.E) && !hasMoved)
         {
             // Проверяем, попал ли луч в объект
             if (RayCastGloabl.rayGlobal.collider.name == gameObject.name)
@@ -26,6 +29,7 @@ public class IaikiBolshie : MonoBehaviour
 
                 // Перемещаем камеру игрока к заданной точке
                 MovePlayerToPoint();
+                hasMoved = true; // Устанавливаем флаг, что игрок был перемещен
             }
         }
     }
@@ -58,9 +62,7 @@ public class IaikiBolshie : MonoBehaviour
     // Метод для возврата игрока на предыдущие позиции
     public void ReturnToPreviousPosition()
     {
-        //player.transform.position = previousPlayerPosition;
-        //player.GetComponentInChildren<Camera>().transform.position = previousCameraPosition;
-        player.GetComponentInChildren<Camera>().transform.localPosition = new Vector3(0f,1.48800004f,0f);
+        player.GetComponentInChildren<Camera>().transform.localPosition = new Vector3(0f, 1.48800004f, 0f);
 
         // Включаем управление и отображение
         player.GetComponentInChildren<FirstPersonLook>().enabled = true;

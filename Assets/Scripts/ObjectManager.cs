@@ -9,6 +9,8 @@ public class ObjectManager : MonoBehaviour
 
     public IaikiBolshie iaikiBolshie; 
 
+    private bool hasMoved = false; // Переменная для отслеживания, было ли перемещение
+
     private void Update()
     {
         if (objects.Length != 6)
@@ -27,22 +29,20 @@ public class ObjectManager : MonoBehaviour
             }
         }
 
-        // Если 3 или более объектов отключены, вызываем метод из IaikiBolshie
-        if (disabledCount >= 3)
+        // Если 3 или более объектов отключены и объект еще не перемещен
+        if (disabledCount >= 3 && !hasMoved)
         {
             ChangeTargetObjectTransform();
             iaikiBolshie.ReturnToPreviousPosition(); // Вызываем метод возврата позиции
             
-            // Отключаем isKinematic у Rigidbody объекта Otchet
-            GameObject otchetObject = GameObject.Find("Otchet");
-            if (otchetObject != null)
+            // Отключаем isKinematic у Rigidbody, если он есть
+            Rigidbody rb = targetObject.GetComponent<Rigidbody>();
+            if (rb != null)
             {
-                Rigidbody otchetRigidbody = otchetObject.GetComponent<Rigidbody>();
-                if (otchetRigidbody != null)
-                {
-                    otchetRigidbody.isKinematic = false; // Отключаем isKinematic
-                }
+                rb.isKinematic = false;
             }
+
+            hasMoved = true; // Устанавливаем флаг, что объект был перемещен
         }
     }
 
