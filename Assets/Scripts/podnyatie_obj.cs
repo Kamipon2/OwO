@@ -69,7 +69,7 @@ void Update()
 
 if(Grab){//ф-ция притяжения
 if(hit.rigidbody){
-hit.rigidbody.velocity = (offset.position - (hit.transform.position + hit.rigidbody.centerOfMass))*grabPower;
+    hit.rigidbody.velocity = (offset.position - (hit.transform.position + hit.rigidbody.centerOfMass))*grabPower;
 //hit.transform.eulerAngles = new Vector3(0,0,0);
 }
 }

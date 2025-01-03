@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class IaikiBolshie : MonoBehaviour
 {
     public GameObject player; // Ссылка на игрока

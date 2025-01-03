@@ -32,6 +32,17 @@ public class ObjectManager : MonoBehaviour
         {
             ChangeTargetObjectTransform();
             iaikiBolshie.ReturnToPreviousPosition(); // Вызываем метод возврата позиции
+            
+            // Отключаем isKinematic у Rigidbody объекта Otchet
+            GameObject otchetObject = GameObject.Find("Otchet");
+            if (otchetObject != null)
+            {
+                Rigidbody otchetRigidbody = otchetObject.GetComponent<Rigidbody>();
+                if (otchetRigidbody != null)
+                {
+                    otchetRigidbody.isKinematic = false; // Отключаем isKinematic
+                }
+            }
         }
     }
 
@@ -41,10 +52,6 @@ public class ObjectManager : MonoBehaviour
         {
             targetObject.transform.position = newPosition;
             targetObject.transform.rotation = newRotation;
-        }
-        else
-        {
-            Debug.LogWarning("Целевой объект не установлен.");
         }
     }
 }
