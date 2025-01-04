@@ -3206,7 +3206,7 @@ GameObject:
   - component: {fileID: 1316586567}
   m_Layer: 0
   m_Name: Otchet
-  m_TagString: Untagged
+  m_TagString: DisappearingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4319,6 +4319,72 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5053925668127403250, guid: bd3111f7e219db742adc0713074458a0, type: 3}
+--- !u!1 &1938845660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938845663}
+  - component: {fileID: 1938845662}
+  - component: {fileID: 1938845661}
+  m_Layer: 0
+  m_Name: Propadi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1938845661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938845660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d8dcdd86e91d0499ab50885f2bfe02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1938845662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938845660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.055771925, y: 0.23327295, z: 0.31427714}
+  m_Center: {x: 0.046980906, y: -0.0014691674, z: 0.038937952}
+--- !u!4 &1938845663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938845660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.82264304, y: 14.644, z: 4.874}
+  m_LocalScale: {x: 3.2255461, y: 3.2255461, z: 3.2255461}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2016920562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: bd3111f7e219db742adc0713074458a0, type: 3}
@@ -4945,6 +5011,7 @@ SceneRoots:
   - {fileID: 1125671784}
   - {fileID: 285550678}
   - {fileID: 2111595116}
+  - {fileID: 1938845663}
   - {fileID: 981840576}
   - {fileID: 1316586564}
   - {fileID: 1404771208}
