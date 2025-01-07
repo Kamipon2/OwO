@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (IsObjectInReach())
+            if (IsObjectInReach() && IsLookingAtTarget())
             {
                 ChangeScene();
             }
@@ -32,6 +32,25 @@ public class SceneChanger : MonoBehaviour
         
         // Проверяем, находится ли объект в пределах досягаемости
         return distanceToTarget <= interactionDistance;
+    }
+
+    private bool IsLookingAtTarget()
+    {
+        if (targetObject == null)
+        {
+            return false;
+        }
+
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hit;
+
+        // Выполняем Raycast и проверяем, попадает ли он на целевой объект
+        if (Physics.Raycast(ray, out hit, interactionDistance))
+        {
+            return hit.collider.gameObject == targetObject;
+        }
+
+        return false;
     }
 
     private void ChangeScene()
