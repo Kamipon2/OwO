@@ -3,12 +3,15 @@ using UnityEngine;
 public class ClickAnimation : MonoBehaviour
 {
     private Animator animator;
-    private bool hasAnimationPlayed = false; 
+    private bool hasAnimationPlayed = false;
 
-    
-    public GameObject targetObject; 
-    public string scriptName1; 
-    public string scriptName2; 
+    public GameObject targetObject;
+    public string scriptName1;
+    public string scriptName2;
+
+    public AudioClip clickSound; 
+    public Vector3 soundPosition; 
+    public float soundDelay = 0.5f; 
 
     void Start()
     {
@@ -17,19 +20,32 @@ public class ClickAnimation : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!hasAnimationPlayed) 
+        if (!hasAnimationPlayed)
         {
             if (animator != null)
             {
                 AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-                if (!stateInfo.IsName("YourAnimationName")) 
+                if (!stateInfo.IsName("YourAnimationName"))
                 {
                     animator.SetTrigger("PlayAnimation");
-                    hasAnimationPlayed = true; 
-                    Invoke("EnableScripts", animator.GetCurrentAnimatorStateInfo(0).length); 
+                    hasAnimationPlayed = true;
+
+                    // Используем Invoke для задержки воспроизведения звука
+                    Invoke("PlaySound", soundDelay);
+
+                    Invoke("EnableScripts", animator.GetCurrentAnimatorStateInfo(0).length);
                 }
             }
+        }
+    }
+
+    private void PlaySound()
+    {
+        // Воспроизводим звук в заданной позиции
+        if (clickSound != null)
+        {
+            AudioSource.PlayClipAtPoint(clickSound, soundPosition);
         }
     }
 
