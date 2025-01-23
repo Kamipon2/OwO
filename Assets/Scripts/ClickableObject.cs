@@ -12,6 +12,7 @@ public class ClickAnimation : MonoBehaviour
     public AudioClip clickSound; 
     public Vector3 soundPosition; 
     public float soundDelay = 0.5f; 
+    public float scriptEnableDelay = 5f; 
 
     void Start()
     {
@@ -34,7 +35,8 @@ public class ClickAnimation : MonoBehaviour
                     // Используем Invoke для задержки воспроизведения звука
                     Invoke("PlaySound", soundDelay);
 
-                    Invoke("EnableScripts", animator.GetCurrentAnimatorStateInfo(0).length);
+                    // Используем Invoke для задержки включения скриптов
+                    Invoke("EnableScripts", scriptEnableDelay);
                 }
             }
         }
