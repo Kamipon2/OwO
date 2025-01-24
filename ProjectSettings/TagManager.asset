@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - DisappearingObject
+  - Telephone
   layers:
   - Default
   - TransparentFX
