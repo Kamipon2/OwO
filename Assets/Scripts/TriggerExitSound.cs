@@ -19,7 +19,7 @@ public class TriggerExitSound : MonoBehaviour
                 triggerSound.DisableAudioSource(); // Отключаем AudioSource в первом скрипте
             }
             PlaySound();
-            hasPlayed = true; // Устанавливаем флаг, что звук уже воспроизведён
+            hasPlayed = true; 
         }
     }
 
