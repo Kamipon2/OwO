@@ -3,14 +3,30 @@ using UnityEngine.AI;
 
 public class RandomMovement : MonoBehaviour
 {
-    private NavMeshAgent agent;
     public float moveRadius = 10f; // Радиус, в пределах которого персонаж будет двигаться
     public float changeDirectionTime = 3f; // Время между сменами направления
+
+    private NavMeshAgent agent;
+    private Animator animator; // Ссылка на компонент Animator
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>(); // Получаем компонент Animator
         InvokeRepeating(nameof(SetNewRandomDestination), 0f, changeDirectionTime); // Каждые несколько секунд устанавливаем новое направление
+    }
+
+    private void Update()
+    {
+        // Проверяем, движется ли агент
+        if (agent.velocity.magnitude > 0.1f) // Если скорость больше 0.1, значит, персонаж движется
+        {
+            animator.SetBool("isMoving", true); // Устанавливаем параметр isMoving в true
+        }
+        else
+        {
+            animator.SetBool("isMoving", false); // Устанавливаем параметр isMoving в false
+        }
     }
 
     private void SetNewRandomDestination()
