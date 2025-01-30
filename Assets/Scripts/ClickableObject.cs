@@ -9,6 +9,8 @@ public class ClickAnimation : MonoBehaviour
     public string scriptName1;
     public string scriptName2;
 
+    public GameObject objectToEnable; // Новый объект для активации
+
     public AudioClip clickSound; 
     public Vector3 soundPosition; 
     public float soundDelay = 0.5f; 
@@ -35,8 +37,8 @@ public class ClickAnimation : MonoBehaviour
                     // Используем Invoke для задержки воспроизведения звука
                     Invoke("PlaySound", soundDelay);
 
-                    // Используем Invoke для задержки включения скриптов
-                    Invoke("EnableScripts", scriptEnableDelay);
+                    // Используем Invoke для задержки включения скриптов и объекта
+                    Invoke("EnableScriptsAndObject", scriptEnableDelay);
                 }
             }
         }
@@ -51,7 +53,7 @@ public class ClickAnimation : MonoBehaviour
         }
     }
 
-    private void EnableScripts()
+    private void EnableScriptsAndObject()
     {
         if (targetObject != null)
         {
@@ -68,6 +70,12 @@ public class ClickAnimation : MonoBehaviour
             {
                 script2.enabled = true;
             }
+        }
+
+        // Активируем указанный объект
+        if (objectToEnable != null)
+        {
+            objectToEnable.SetActive(true);
         }
     }
 }

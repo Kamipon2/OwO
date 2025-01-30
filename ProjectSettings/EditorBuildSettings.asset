@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nighr2.unity
     guid: 38e7b5a44c3a8bd4db1d0f32010c6851
+  - enabled: 1
+    path: Assets/Scenes/nighr6.unity
+    guid: 1f43d9bcaa1fdc24a9b54f0314f1291d
   m_configObjects: {}
