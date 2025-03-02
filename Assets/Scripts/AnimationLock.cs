@@ -5,10 +5,10 @@ public class ClickAnimations : MonoBehaviour
     private Animator animator;
     private bool hasAnimationPlayed = false; 
 
-    // Ссылки на объекты, содержащие скрипты, которые нужно включить
+    
     public GameObject targetObject; 
-    public string scriptName1; // Имя первого скрипта
-    public string scriptName2; // Имя второго скрипта
+    public string scriptName1; 
+    public string scriptName2; 
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class ClickAnimations : MonoBehaviour
                 {
                     animator.SetTrigger("PlayAnimation");
                     hasAnimationPlayed = true; 
-                    Invoke("EnableScripts", animator.GetCurrentAnimatorStateInfo(0).length); // Включаем скрипты после завершения анимации
+                    Invoke("EnableScripts", animator.GetCurrentAnimatorStateInfo(0).length); 
                 }
             }
         }

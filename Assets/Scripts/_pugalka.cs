@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections; // Не забудьте добавить это пространство имен для корутин
+using System.Collections; 
 
 public class Pugalka : MonoBehaviour
 {
@@ -8,19 +8,19 @@ public class Pugalka : MonoBehaviour
     public Vector3 newPosition; 
     public Quaternion newRotation; 
 
-    public GameObject newObject; // Существующий объект, который будет перемещен
-    public Transform placementObject; // Объект, на который будет ставиться новый объект
+    public GameObject newObject; 
+    public Transform placementObject; 
 
     public IaikiBolshie iaikiBolshie; 
 
-    private bool hasMoved = false; // Переменная для отслеживания, было ли перемещение
+    private bool hasMoved = false;
 
-    public AudioClip soundToPlay; // Аудиоклип, который будет воспроизводиться
-    private AudioSource audioSource; // Компонент AudioSource
+    public AudioClip soundToPlay;
+    private AudioSource audioSource;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>(); // Получаем компонент AudioSource
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
