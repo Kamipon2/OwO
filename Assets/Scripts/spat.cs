@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement; // Добавлено для управления сценами
 
 public class spat : MonoBehaviour
 {
@@ -9,6 +11,13 @@ public class spat : MonoBehaviour
     private Vector3 previousCameraPosition; 
 
     private bool hasMoved = false; 
+
+    // Добавляем ссылки на объекты, которые нужно активировать
+    public GameObject objectToEnable1; // Первый объект для активации
+    public GameObject objectToEnable2; // Второй объект для активации
+
+    // Индекс сцены, на которую нужно перейти
+    public int sceneIndexToLoad; // Укажите индекс сцены в инспекторе
 
     void Start()
     {
@@ -27,6 +36,8 @@ public class spat : MonoBehaviour
                 
                 MovePlayerToPoint();
                 hasMoved = true; 
+                
+                StartCoroutine(EnableObjectsAfterDelay(7f));
             }
         }
     }
@@ -49,7 +60,6 @@ public class spat : MonoBehaviour
         gameObject.GetComponent<MeshCollider>().enabled = false;
         
         Cursor.lockState = CursorLockMode.None; 
-        
     }
     
     public void ReturnToPreviousPosition()
@@ -63,6 +73,23 @@ public class spat : MonoBehaviour
         gameObject.GetComponent<MeshCollider>().enabled = true;
         
         Cursor.lockState = CursorLockMode.Locked; 
+    }
+
+    private IEnumerator EnableObjectsAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Включаем объекты
+        if (objectToEnable1 != null)
+            objectToEnable1.SetActive(true);
+
+        if (objectToEnable2 != null)
+            objectToEnable2.SetActive(true);
+
+        // Ждем 3 секунды перед переходом на другую сцену
+        yield return new WaitForSeconds(3f);
         
+        // Переход на другую сцену по индексу
+        SceneManager.LoadScene(sceneIndexToLoad);
     }
 }
