@@ -1,79 +1,85 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Не забудьте добавить это пространство имен
 
-public class TriggerAnimator : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
-    // Ссылка на объект с Animator
-    public GameObject objectWithAnimator;
+    public GameObject objectToActivate; // Объект 2, который нужно активировать
+    public AudioClip sound; // Звук для воспроизведения
+    private AudioSource audioSource;
 
-    // Ссылка на объект, который нужно включить
-    public GameObject objectToActivate;
+    public GameObject newModel; // Новая модель для объекта 1
+    public Vector3 newPosition; // Новая позиция для объекта 1
+    public GameObject objectToSwap; // Объект, с которым будет производиться замена
+    public Vector3 swapRotation; // Поворот, который будет применен к объекту для замены
 
-    // Индекс сцены для смены
-    public int sceneIndexToLoad;
+    private bool hasInteracted = false; // Флаг, чтобы отслеживать, было ли взаимодействие
 
-    // Время ожидания перед активацией объекта и сменой сцены
-    private float activationDelay = 4f; // Задержка активации объекта
-    private float sceneChangeDelay = 2f; // Задержка смены сцены
-    private float timer;
-    private bool isTimerRunning = false;
-    private bool isObjectActivated = false; // Флаг для отслеживания активации объекта
-
-    // Метод, который будет вызываться при входе в триггер
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        // Проверяем, что триггер касается объекта с тегом "Player"
-        if (other.CompareTag("Player"))
+        audioSource = gameObject.AddComponent<AudioSource>(); // Добавляем компонент AudioSource
+        audioSource.clip = sound; // Устанавливаем звук
+    }
+
+    private void OnMouseDown()
+    {
+        // Вызываем метод Interact при нажатии на объект 1, только если еще не взаимодействовали
+        if (!hasInteracted)
         {
-            // Получаем компонент Animator у указанного объекта
-            Animator animator = objectWithAnimator.GetComponent<Animator>();
-
-            // Проверяем, что компонент Animator существует
-            if (animator != null)
-            {
-                // Включаем анимацию
-                animator.enabled = true;
-            }
-            else
-            {
-                Debug.LogWarning("Animator не найден на объекте: " + objectWithAnimator.name);
-            }
-
-            // Запускаем таймер для активации объекта
-            timer = activationDelay;
-            isTimerRunning = true;
+            Interact();
         }
     }
 
-    private void Update()
+    private void Interact()
     {
-        // Если таймер запущен, уменьшаем его значение
-        if (isTimerRunning)
+        hasInteracted = true; // Устанавливаем флаг взаимодействия в true
+
+        // Активируем объект 2
+        if (objectToActivate != null)
         {
-            timer -= Time.deltaTime;
+            objectToActivate.SetActive(true); // Включаем объект 2
+            Invoke("HideObject", 2f); // Запускаем метод HideObject через 2 секунды
+        }
 
-            // Если таймер достиг нуля и объект еще не активирован, активируем его
-            if (timer <= 0f && !isObjectActivated)
-            {
-                if (objectToActivate != null)
-                {
-                    objectToActivate.SetActive(true);
-                    isObjectActivated = true; // Устанавливаем флаг активации объекта
-                }
-                else
-                {
-                    Debug.LogWarning("Объект для активации не задан.");
-                }
+        // Воспроизводим звук
+        audioSource.Play();
 
-                // Запускаем таймер для смены сцены после активации объекта
-                timer = sceneChangeDelay;
-            }
+        // Меняем модель и позицию объекта 1
+        ChangeModelAndPosition();
+    }
 
-            // Если таймер для смены сцены достиг нуля, меняем сцену
-            if (isObjectActivated && timer <= 0f)
-            {
-                SceneManager.LoadScene(sceneIndexToLoad);
-            }
+    private void HideObject()
+    {
+        // Отключаем объект 2
+        if (objectToActivate != null)
+        {
+            objectToActivate.SetActive(false);
+        }
+    }
+
+    private void ChangeModelAndPosition()
+    {
+        // Сохраняем текущую позицию и вращение объекта 1
+        Vector3 currentPosition = transform.position;
+        Quaternion currentRotation = transform.rotation;
+
+        // Меняем модель объекта 1
+        if (newModel != null)
+        {
+            Destroy(transform.GetChild(0).gameObject); // Удаляем текущую модель (предполагается, что она первая дочерняя)
+            Instantiate(newModel, currentPosition, currentRotation, transform); // Создаем новую модель
+        }
+
+        // Проверяем, есть ли объект для замены
+        if (objectToSwap != null)
+        {
+            // Сохраняем позицию объекта для замены
+            Vector3 swapPosition = objectToSwap.transform.position;
+
+            // Меняем местами объект 1 и объект для замены
+            objectToSwap.transform.position = currentPosition;
+            objectToSwap.transform.rotation = Quaternion.Euler(swapRotation); // Применяем заданный поворот к объекту для замены
+
+            transform.position = swapPosition;
+            transform.rotation = currentRotation;
         }
     }
 }

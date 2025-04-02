@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class TriggerSound : MonoBehaviour
 {
-    public AudioClip soundToPlay; // Звук, который будет воспроизводиться
-    public AudioSource audioSource; // Источник звука
+    public AudioClip soundToPlay;
+    public AudioSource audioSource; 
 
-    private bool hasPlayed = false; // Переменная для отслеживания, был ли звук воспроизведён
+    private bool hasPlayed = false; 
 
-    public void StopSound() // Метод для остановки звука
+    public void StopSound() 
     {
         audioSource.Stop();
-        hasPlayed = false; // Сбрасываем флаг, чтобы звук мог воспроизводиться снова
+        hasPlayed = false; 
     }
 
-    public void DisableAudioSource() // Метод для отключения AudioSource
+    public void DisableAudioSource() 
     {
         if (audioSource != null)
         {
-            audioSource.enabled = false; // Отключаем AudioSource
+            audioSource.enabled = false; 
         }
     }
 
@@ -26,7 +26,7 @@ public class TriggerSound : MonoBehaviour
         if (other.CompareTag("Player") && !hasPlayed)
         {
             PlaySound();
-            hasPlayed = true; // Устанавливаем флаг, что звук уже воспроизведён
+            hasPlayed = true; 
         }
     }
 
